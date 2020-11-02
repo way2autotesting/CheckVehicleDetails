@@ -1,6 +1,7 @@
 package com.CarTax.test.pages;
 
 import com.CarTax.framework.base.BasePage;
+import com.CarTax.framework.base.DriverContext;
 import com.CarTax.framework.base.LocalDriverContext;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
@@ -43,6 +44,7 @@ public class FreeCarCheckHomePage extends BasePage {
 
     public void InputVehicleReg(String regNumber) throws IOException {
 
+        DriverContext.WaitThreadSleep();
         enterRegistration.sendKeys(ExtractRegistrationNumberFromTheFile(regNumber).trim());
     }
 

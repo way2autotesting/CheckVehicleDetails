@@ -14,7 +14,7 @@ Feature: To check vehicle identity
 
     Examples:
       | Reg      |
- #     | DN09HRM  |
-#      | BW57BOW  |
+      | DN09HRM  |
+      | BW57BOF  |
       | KT17DLX  |
-#      | SG18 HTN |
+      | SG18 HTN |

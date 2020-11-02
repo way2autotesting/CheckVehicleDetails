@@ -43,27 +43,34 @@ public class VehicleIdentityPage extends BasePage {
             //lineNum++;
             String[] pair = line.split(",");
             System.out.println("print each line as : " + pair[lineNum]);
-            if (pair.length != 2 && reg.contains(pair[lineNum])) {
+            if (pair.length != 2 && reg.replaceAll("\\s","").trim().contains(pair[lineNum].replaceAll("\\s",""))) {
 
+                DriverContext.ScrollDown();
+                DriverContext.ScrollDown();
+                DriverContext.WaitThreadSleep();
                 System.out.println("Print colour from web page is : "+GetColourOfTheVehicle());
                 System.out.println("Print colour from note pad is : "+pair[lineNum+3].trim());
                 Assert.assertTrue(GetColourOfTheVehicle().equalsIgnoreCase(pair[lineNum+3].trim()));
 
+                DriverContext.WaitThreadSleep();
                 System.out.println("Print year from web page is :"+GetYearOfTheVehicle());
                 System.out.println("Print year from note pad is :"+pair[lineNum+4].trim());
-                Assert.assertTrue(GetYearOfTheVehicle().contains((pair[lineNum]+4)));
+                Assert.assertTrue(GetYearOfTheVehicle().contains((pair[lineNum]+4).replaceAll("\\s","").trim()));
 
+                DriverContext.WaitThreadSleep();
                 System.out.println("Print model from web page is : "+GetModelOfTheVehicle());
                 System.out.println("Print model from note pad is : "+pair[lineNum+2].trim());
-                Assert.assertTrue(GetModelOfTheVehicle().equalsIgnoreCase((pair[lineNum]+2).trim()));
+                Assert.assertTrue(GetModelOfTheVehicle().equalsIgnoreCase((pair[lineNum]+2).replaceAll("\\s","").trim()));
 
+                DriverContext.WaitThreadSleep();
                 System.out.println("Print make from web page is : "+GetMakeOfTheVehicle());
                 System.out.println("Print make from note pad is : "+pair[lineNum+1].trim());
-                Assert.assertTrue(GetMakeOfTheVehicle().equalsIgnoreCase((pair[lineNum]+1).trim()));
+                Assert.assertTrue(GetMakeOfTheVehicle().equalsIgnoreCase((pair[lineNum]+1).replaceAll("\\s","").trim()));
 
+                DriverContext.WaitThreadSleep();
                 System.out.println("Print registration from web page is : "+GetRegOfTheVehicle());
                 System.out.println("Print make from note pad is : "+pair[lineNum].trim());
-                Assert.assertTrue(GetRegOfTheVehicle().equalsIgnoreCase((pair[lineNum]).trim()));
+                Assert.assertTrue(GetRegOfTheVehicle().equalsIgnoreCase((pair[lineNum]).replaceAll("\\s","").trim()));
 
                 continue;
             }
@@ -87,7 +94,7 @@ public class VehicleIdentityPage extends BasePage {
                 .until(ExpectedConditions.presenceOfElementLocated(
                         By.cssSelector("#m > div.jsx-79705764 > div:nth-child(4) > div.jsx-1843467667 > div > span > div.jsx-3499070155 > dl:nth-child(5) > dd")));
 
-        return year.getText().trim();
+        return year.getText().replaceAll("\\s","").trim();
     }
 
     //todo:---- vehicle model validation

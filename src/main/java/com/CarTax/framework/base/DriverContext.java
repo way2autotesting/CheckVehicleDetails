@@ -44,11 +44,18 @@ public class DriverContext {
             Settings.logs.Write("Page is ready !");
     }
 
-    public static void WaitForElementToBeClickable(WebElement locator) {
+    public static void ScrollDown(){
 
-        WebDriverWait wait = new WebDriverWait(LocalDriverContext.getRemoteWebDriver(), 60);
-        wait.until(ExpectedConditions.elementToBeClickable(locator)).click();
-        WaitForPageToLoad();
-        Settings.logs.Write("Wait for element to be clickable");
+        JavascriptExecutor jse = (JavascriptExecutor)LocalDriverContext.getRemoteWebDriver();
+        jse.executeScript("window.scrollBy(0,250)");
+    }
+
+    public static void WaitThreadSleep(){
+
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

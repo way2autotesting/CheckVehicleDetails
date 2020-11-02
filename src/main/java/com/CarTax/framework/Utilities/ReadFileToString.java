@@ -46,7 +46,7 @@ public class ReadFileToString {
             break;
         }
 
-        return matcher.group().trim();
+        return matcher.group().replaceAll("\\s","").trim();
 
     }
 
